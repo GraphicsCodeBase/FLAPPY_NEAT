@@ -14,6 +14,7 @@ add_executable(FlappyNEAT ${SOURCES})
 
 target_include_directories(FlappyNEAT PRIVATE
     src/
+    headers/
 )
 
 target_link_libraries(FlappyNEAT PRIVATE
@@ -30,3 +31,4 @@ add_custom_command(TARGET FlappyNEAT POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
         ${CMAKE_SOURCE_DIR}/assets $<TARGET_FILE_DIR:FlappyNEAT>/assets
 )
+ 
