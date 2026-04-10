@@ -10,7 +10,7 @@ find_package(OpenGL REQUIRED)
 
 file(GLOB_RECURSE SOURCES "src/*.cpp")
 
-add_executable(FlappyNEAT ${SOURCES})
+add_executable(FlappyNEAT ${SOURCES} "src/Renderer.cpp" "headers/Renderer.h")
 
 target_include_directories(FlappyNEAT PRIVATE
     src/

@@ -1,5 +1,5 @@
 #include "Window.h"
-#include "Shaders.h"
+#include "Renderer.h"
 #include <iostream>
 
 int main()
@@ -8,29 +8,30 @@ int main()
     if (!window.init(1280, 720, "FlappyNEAT"))
         return -1;
 
-    std::cout << "Window opened successfully!\n";
+    Renderer renderer;
+    renderer.init();
 
-    //try to load shaders
-    Shader shader; //make the shader object.
-    if (!shader.load("assets/Shaders/quad.vert", "assets/Shaders/quad.frag")) {
-        std::cerr << "Failed to load shaders!\n";
-        window.shutdown();
-        return -1;
-    }
-    std::cout << "Shaders compiled successfully!\n";
-
-    // Render loop
     while (!window.shouldClose())
     {
         window.pollEvents();
 
-        // Clear to a dark blue-grey background
         glClearColor(0.1f, 0.1f, 0.15f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+
+        renderer.beginFrame();
+
+        // Draw a rectangle - orange
+        renderer.drawQuad(-0.5f, -0.3f, 0.4f, 0.6f, 1.0f, 0.5f, 0.0f);
+
+        // Draw a circle - cyan
+        renderer.drawCircle(0.3f, 0.0f, 0.2f, 0.0f, 0.8f, 1.0f);
+
+        renderer.endFrame();
 
         window.swapBuffers();
     }
 
+    renderer.shutdown();
     window.shutdown();
     return 0;
 }
