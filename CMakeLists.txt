@@ -24,10 +24,8 @@ target_link_libraries(FlappyNEAT PRIVATE
     OpenGL::GL
 )
 
-# Copy shaders and assets next to the executable after build
+# Copy assets next to the executable after build
 add_custom_command(TARGET FlappyNEAT POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_SOURCE_DIR}/shaders $<TARGET_FILE_DIR:FlappyNEAT>/shaders
     COMMAND ${CMAKE_COMMAND} -E copy_directory
         ${CMAKE_SOURCE_DIR}/assets $<TARGET_FILE_DIR:FlappyNEAT>/assets
 )
