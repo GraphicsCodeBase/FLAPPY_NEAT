@@ -20,11 +20,11 @@ int main()
 
         renderer.beginFrame();
 
-        // Draw a rectangle - orange
-        renderer.drawQuad(-0.5f, -0.3f, 0.4f, 0.6f, 1.0f, 0.5f, 0.0f);
+        // Draw a rectangle - orange  (world space [0,1])
+        renderer.drawQuad(0.1f, 0.2f, 0.3f, 0.5f, 1.0f, 0.5f, 0.0f);
 
         // Draw a circle - cyan
-        renderer.drawCircle(0.3f, 0.0f, 0.2f, 0.0f, 0.8f, 1.0f);
+        renderer.drawCircle(0.7f, 0.5f, 0.1f, 0.0f, 0.8f, 1.0f);
 
         renderer.endFrame();
 

@@ -1,6 +1,7 @@
 #include "Renderer.h"
 #include <cmath>
 #include <iostream>
+#include <glm/gtc/matrix_transform.hpp>
 
 static const float PI = 3.14159265358979f;
 
@@ -8,6 +9,11 @@ void Renderer::init()
 {
     // Load shaders
     m_shader.load("assets/Shaders/quad.vert", "assets/Shaders/quad.frag");
+
+    // Ortho projection: world space [0,1] x [0,1] -> NDC
+    glm::mat4 proj = glm::ortho(0.0f, 1.0f, 0.0f, 1.0f, -1.0f, 1.0f);
+    m_shader.use();
+    m_shader.setMat4("u_projection", proj);
 
     // Create VAO, VBO, EBO
     glGenVertexArrays(1, &m_VAO);

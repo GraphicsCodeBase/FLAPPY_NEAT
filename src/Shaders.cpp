@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <glm/gtc/type_ptr.hpp>
 
 std::string Shader::readFile(const std::string& path)
 {
@@ -61,3 +62,9 @@ bool Shader::load(const std::string& vertPath, const std::string& fragPath)
 
 void Shader::use()     const { glUseProgram(m_program); }
 void Shader::shutdown() { glDeleteProgram(m_program); }
+
+void Shader::setMat4(const std::string& name, const glm::mat4& mat) const
+{
+    GLint loc = glGetUniformLocation(m_program, name.c_str());
+    glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(mat));
+}
