@@ -7,15 +7,16 @@ namespace Config {
 	inline constexpr int   WINDOW_H = 720;
 
 	// --- World coordinate space: [0,1] x [0,1] -----------------------------------
-	inline constexpr float GRAVITY = -9.8f;
-	inline constexpr float FLAP_IMPULSE = 3.2f;
-	inline constexpr float MAX_FALL_SPEED = -5.0f;
-	inline constexpr float BIRD_X = 0.25f;
-	inline constexpr float BIRD_RADIUS = 0.025f;
+	inline constexpr float GRAVITY        = -3.5f;   // was -9.8  — gentler fall
+	inline constexpr float FLAP_IMPULSE   =  1.2f;   // was  3.2  — proportional to new gravity
+	inline constexpr float MAX_FALL_SPEED = -2.0f;   // was -5.0  — slower terminal velocity
+	inline constexpr float BIRD_X         =  0.25f;
+	inline constexpr float BIRD_RADIUS    =  0.025f; // visual size
+	inline constexpr float BIRD_HITBOX    =  0.016f; // collision radius (~65% of visual) — forgiving hitbox
 
 	// --- Pipes -------------------------------------------------------------------
 	inline constexpr float PIPE_WIDTH = 0.08f;
-	inline constexpr float PIPE_GAP = 0.22f;
+	inline constexpr float PIPE_GAP = 0.32f;   // was 0.22 — wider gap, easier to pass
 	inline constexpr float PIPE_SPEED = 0.15f;
 	inline constexpr float PIPE_SPAWN_X = 1.05f;
 	inline constexpr float PIPE_GAP_MIN_Y = 0.20f;
@@ -26,7 +27,7 @@ namespace Config {
 	inline constexpr float FIXED_DT = 1.0f / 60.0f;
 
 	// --- NEAT --------------------------------------------------------------------
-	inline constexpr int   POPULATION_SIZE = 150;
+	inline constexpr int   POPULATION_SIZE = 1;    // set back to 150 when NEAT is wired in
 	inline constexpr int   INPUTS = 5;
 	inline constexpr int   OUTPUTS = 1;
 
