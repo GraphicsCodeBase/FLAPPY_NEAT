@@ -27,7 +27,7 @@ namespace Config {
 	inline constexpr float FIXED_DT = 1.0f / 60.0f;
 
 	// --- NEAT --------------------------------------------------------------------
-	inline constexpr int   POPULATION_SIZE = 1;    // set back to 150 when NEAT is wired in
+	inline constexpr int   POPULATION_SIZE = 150;  
 	inline constexpr int   INPUTS = 5;
 	inline constexpr int   OUTPUTS = 1;
 
